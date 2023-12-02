@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1696386893 source:c:\users\vinya\onedrive\햞ea de trabalho\testes\trab tp1\projecttp01\dominios.cpp
+	"dominios.h"
+	<cstring>
+	<string>
+	<iostream>
+	<bits/stdc++.h>
+
+1697905305 c:\users\vinya\onedrive\햞ea de trabalho\testes\trab tp1\projecttp01\dominios.h
+	<stdexcept>
+	<string>
+
+1696243894 source:c:\users\vinya\onedrive\햞ea de trabalho\testes\trab tp1\projecttp01\entidades.cpp
+	"entidades.h"
+
+1697905305 c:\users\vinya\onedrive\햞ea de trabalho\testes\trab tp1\projecttp01\entidades.h
+	"dominios.h"
+	<string>
+
+1696542615 source:c:\users\vinya\onedrive\햞ea de trabalho\testes\trab tp1\projecttp01\testes.cpp
+	"testes.h"
+
+1696377679 source:c:\users\vinya\onedrive\햞ea de trabalho\testes\trab tp1\projecttp01\main.cpp
+	<iostream>
+	<typeinfo>
+	<string>
+	"dominios.h"
+	"entidades.h"
+	"testes.h"
+
+1696542616 c:\users\vinya\onedrive\햞ea de trabalho\testes\trab tp1\projecttp01\testes.h
+	"dominios.h"
+	"entidades.h"
+
+1696386894 source:c:\users\nomur\downloads\projecttp01\dominios.cpp
+	"dominios.h"
+	<cstring>
+	<string>
+	<iostream>
+	<bits/stdc++.h>
+
+1697905306 c:\users\nomur\downloads\projecttp01\dominios.h
+	<stdexcept>
+	<string>
+
+1696243896 source:c:\users\nomur\downloads\projecttp01\entidades.cpp
+	"entidades.h"
+
+1697905306 c:\users\nomur\downloads\projecttp01\entidades.h
+	"dominios.h"
+	<string>
+
+1696377680 source:c:\users\nomur\downloads\projecttp01\main.cpp
+	<iostream>
+	<typeinfo>
+	<string>
+	"dominios.h"
+	"entidades.h"
+	"testes.h"
+
+1696542618 c:\users\nomur\downloads\projecttp01\testes.h
+	"dominios.h"
+	"entidades.h"
+
+1696542616 source:c:\users\nomur\downloads\projecttp01\testes.cpp
+	"testes.h"
+
