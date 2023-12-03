@@ -1,11 +1,11 @@
-#ifndef SERVICOS_H_INCLUDED
-#define SERVICOS_H_INCLUDED
+#ifndef CONTROLADORASSERVICO_H_INCLUDED
+#define CONTROLADORASSERVICO_H_INCLUDED
 
 #include "interfaces.h"
 #include <optional>
 #include <string>
 #include "entidades.h"
-#include "DatabaseManager.hpp"
+#include "autenticado.h"
 
 class ServicosConta : public IGerenciamentoUsuario {
 private:
@@ -43,4 +43,4 @@ public:
     void excluirCartao(const std::string& codigoCartao, const std::string& emailUsuario) override;
 };
 
-#endif // SERVICOS_HPP_INCLUDED
+#endif // CONTROLADORASSERVICO_H_INCLUDED
