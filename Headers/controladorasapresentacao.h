@@ -1,9 +1,9 @@
 #ifndef APRESENTACAO_H
 #define APRESENTACAO_H
 
-#include "interfaces.hpp"
+#include "interfaces.h"
 #include <iostream>
-#include "controle.hpp"
+#include "controladoras.h"
 
 class TelaInicial : public ITelaInicial {
 public:
