@@ -1,5 +1,5 @@
-#ifndef CONTROLADOR_HPP
-#define CONTROLADOR_HPP
+#ifndef CONTROLADOR_H
+#define CONTROLADOR_H
 
 #include "controladorasservico.h"
 #include <string>
@@ -35,4 +35,4 @@ public:
     bool excluirQuadro(const std::string& emailUsuario, const std::string& codigoQuadro) override;
 };
 
-#endif // CONTROLADOR_HPP
+#endif // CONTROLADOR_H
