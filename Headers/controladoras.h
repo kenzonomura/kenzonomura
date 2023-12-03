@@ -1,30 +1,48 @@
-#ifndef CONTROLADORAS_H_INCLUDED
-#define CONTROLADORAS_H_INCLUDED
+#ifndef CONTROLADOR_HPP
+#define CONTROLADOR_HPP
 
-#include "interfaces.h"
-#include "dominios.h"
+#include "servicos.hpp"
+#include <string>
 
-#include <stdexcept>
-#include <iostream>
-#include <cstdlib>
-
-using namespace std;
-
-
-// Declaração de classe controladora de interação para o serviço de autenticação.
-
-class CntrIUAutenticacao:public IUAutenticacao {
+class ControladorLogin : public IControleLogin {
 private:
-    ILNAutenticacao *cntrLNAutenticacao;            // Referência para servidor.
+    DatabaseManager dbManager;
 
 public:
-    bool autenticar();
-    void setCntrLNAutenticacao(ILNAutenticacao*);
+    ControladorLogin(const std::string& dbPath);
+    bool autenticar(const std::string& email, const std::string& senha) override;
 };
 
 
-void inline CntrIUAutenticacao::setCntrLNAutenticacao(ILNAutenticacao *cntrLNAutenticacao){
-        this->cntrLNAutenticacao = cntrLNAutenticacao;
-}
+class ControladorCadastro : public IControleCadastro {
+private:
+    ServicosConta servicosConta;
 
-#endif // CONTROLADORAS_H_INCLUDED
+public:
+    ControladorCadastro(const std::string& dbPath);
+
+    bool cadastrarUsuario(const std::string& emailStr, const std::string& nomeStr, const std::string& senhaStr);
+};
+
+
+class ControladorQuadros : public IControleQuadros {
+private:
+    ServicosQuadro servicosQuadro;
+
+public:
+    ControladorQuadros(const std::string& dbPath);
+    std::vector<Quadro> obterQuadros(const std::string& emailUsuario) override;
+    bool criarQuadro(const std::string& emailUsuario, 
+                     const std::string& codigo, 
+                     const std::string& nome, 
+                     const std::string& descricao, 
+                     int limite);
+    bool editarQuadro(const std::string& emailUsuario, 
+                      const std::string& codigoQuadro, 
+                      const std::optional<std::string>& novoNome, 
+                      const std::optional<std::string>& novaDescricao, 
+                      const std::optional<int>& novoLimite) override;
+    bool excluirQuadro(const std::string& emailUsuario, const std::string& codigoQuadro) override;
+};
+
+#endif // CONTROLADOR_HPP
