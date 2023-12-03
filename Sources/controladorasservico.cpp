@@ -1,4 +1,4 @@
-#include "servicos.hpp"
+#include "controladorasservico.h"
 #include <stdexcept>
 #include "entidades.h"
 #include <iostream>
@@ -11,7 +11,6 @@ ServicosConta::ServicosConta(const std::string& dbPath) : dbManager(dbPath) {
     }
 }
 
-
 void ServicosConta::criarUsuario(const Conta& conta) {
     // Verifica se o email já existe
     std::string sqlVerifica = "SELECT Email FROM Conta WHERE Email = '" + conta.getEmail() + "';";
@@ -20,11 +19,9 @@ void ServicosConta::criarUsuario(const Conta& conta) {
         throw std::runtime_error("Email já está em uso.");
     }
 
-
     std::string sql = "INSERT INTO Conta (Email, Nome, Senha) VALUES ('" + conta.getEmail() + "', '" + conta.getNome() + "', '" + conta.getSenha() + "');";
     dbManager.executarConsulta(sql);
 }
-
 
 void ServicosConta::editarUsuario(const std::string& email, const std::string& novoNome, const std::string& novaSenha) {
     // Verificar se a conta existe
@@ -55,7 +52,6 @@ void ServicosConta::editarUsuario(const std::string& email, const std::string& n
     dbManager.executarConsulta(sqlAtualizacao);
 }
 
-
 void ServicosConta::excluirUsuario(const std::string& email) {
     // Verificar se a conta existe
     std::string sqlVerificacao = "SELECT Email FROM Conta WHERE Email = '" + email + "';";
@@ -68,7 +64,6 @@ void ServicosConta::excluirUsuario(const std::string& email) {
     std::string sqlExclusao = "DELETE FROM Conta WHERE Email = '" + email + "';";
     dbManager.executarConsulta(sqlExclusao);
 }
-
 
 std::optional<Conta> ServicosConta::visualizarUsuario(const std::string& email) {
     // Verificar se a conta existe
@@ -111,7 +106,6 @@ ServicosQuadro::ServicosQuadro(const std::string& dbPath) : dbManager(dbPath) {
     }
 }
 
-
 void ServicosQuadro::criarQuadro(const std::string& emailConta, const Quadro& quadro) {
     // Verificar se a conta existe
     std::string sqlVerificacaoConta = "SELECT Email FROM Conta WHERE Email = '" + emailConta + "';";
@@ -133,7 +127,6 @@ void ServicosQuadro::criarQuadro(const std::string& emailConta, const Quadro& qu
                       quadro.getDescricao() + "', " + std::to_string(quadro.getLimite()) + ");";
     dbManager.executarConsulta(sql);
 }
-
 
 void ServicosQuadro::editarQuadro(const std::string& emailUsuario, const std::string& codigo, const std::optional<std::string>& novoNome, const std::optional<std::string>& novaDescricao, const std::optional<int>& novoLimite) {
     // Verificar se o quadro pertence ao usuário
@@ -169,7 +162,6 @@ void ServicosQuadro::editarQuadro(const std::string& emailUsuario, const std::st
     dbManager.executarConsulta(sqlAtualizacao);
 }
 
-
 void ServicosQuadro::excluirQuadro(const std::string& emailUsuario, const std::string& codigo) {
     // Verificar se o quadro pertence ao usuário
     std::string sqlVerificaPropriedade = "SELECT EmailConta FROM Quadro WHERE Codigo = '" + codigo + "' AND EmailConta = '" + emailUsuario + "';";
@@ -182,7 +174,6 @@ void ServicosQuadro::excluirQuadro(const std::string& emailUsuario, const std::s
     std::string sqlExclusao = "DELETE FROM Quadro WHERE Codigo = '" + codigo + "';";
     dbManager.executarConsulta(sqlExclusao);
 }
-
 
 std::optional<Quadro> ServicosQuadro::visualizarQuadro(const std::string& emailUsuario, const std::string& codigo) {
     // Verificar se o quadro pertence ao usuário
@@ -248,7 +239,6 @@ void ServicosCartao::criarCartao(const Cartao& cartao, const std::string& codigo
     dbManager.executarConsulta(sql);
 }
 
-
 std::optional<Cartao> ServicosCartao::visualizarCartao(const std::string& codigoCartao, const std::string& emailUsuario) {
     // Verificar se o cartão existe e pertence a um quadro do usuário
     std::string sqlVerificaCartao = "SELECT Cartao.Codigo, Cartao.Nome, Cartao.Descricao, Cartao.Coluna FROM Cartao "
@@ -273,7 +263,6 @@ std::optional<Cartao> ServicosCartao::visualizarCartao(const std::string& codigo
     return cartao;
 }
 
-
 void ServicosCartao::moverCartao(const std::string& codigoCartao, const std::string& novaColuna, const std::string& emailUsuario) {
     // Verificar se o cartão existe e pertence a um quadro do usuário
     std::string sqlVerificaCartao = "SELECT Cartao.Codigo FROM Cartao "
@@ -288,7 +277,6 @@ void ServicosCartao::moverCartao(const std::string& codigoCartao, const std::str
     std::string sqlAtualizacao = "UPDATE Cartao SET Coluna = '" + novaColuna + "' WHERE Codigo = '" + codigoCartao + "';";
     dbManager.executarConsulta(sqlAtualizacao);
 }
-
 
 void ServicosCartao::excluirCartao(const std::string& codigoCartao, const std::string& emailUsuario) {
     // Verificar se o cartão existe e pertence a um quadro do usuário
