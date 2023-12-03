@@ -1,7 +1,7 @@
-#ifndef SERVICOS_HPP_INCLUDED
-#define SERVICOS_HPP_INCLUDED
+#ifndef SERVICOS_H_INCLUDED
+#define SERVICOS_H_INCLUDED
 
-#include "interfaces.hpp"
+#include "interfaces.h"
 #include <optional>
 #include <string>
 #include "entidades.h"
@@ -18,7 +18,6 @@ public:
     std::optional<Conta> visualizarUsuario(const std::string& email);
 };
 
-
 class ServicosQuadro : public IGerenciamentoQuadro{
 public:
     
@@ -31,7 +30,6 @@ public:
 private:
     DatabaseManager dbManager;
 };
-
 
 class ServicosCartao : public IGerenciamentoCartao {
 private:
