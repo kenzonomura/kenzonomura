@@ -1,8 +1,8 @@
-#include "servicos.hpp"
+#include "controladorasservico.h"
 #include "entidades.h"
 #include "dominios.h"
 #include <iostream>
-#include "controle.hpp"
+#include "controladoras.h"
 
 ControladorCadastro::ControladorCadastro(const std::string& dbPath) : servicosConta(dbPath) {}
 
@@ -27,7 +27,6 @@ bool ControladorCadastro::cadastrarUsuario(const std::string& emailStr, const st
     }
 }
 
-
 ControladorLogin::ControladorLogin(const std::string& dbPath) : dbManager(dbPath) {
     if (!dbManager.abrirConexao()) {
         throw std::runtime_error("Erro ao abrir conexão com o banco de dados.");
@@ -49,8 +48,8 @@ bool ControladorLogin::autenticar(const std::string& email, const std::string& s
     }
 }
 
-
 // Construtor
+
 ControladorQuadros::ControladorQuadros(const std::string& dbPath)
     : servicosQuadro(dbPath) {}
 
@@ -89,7 +88,8 @@ bool ControladorQuadros::criarQuadro(const std::string& emailUsuario,
     }
 }
 
-// Método para editar um quadro
+// Edição de quadro
+
 bool ControladorQuadros::editarQuadro(const std::string& emailUsuario, 
                                       const std::string& codigoQuadro, 
                                       const std::optional<std::string>& novoNome, 
@@ -124,7 +124,7 @@ bool ControladorQuadros::editarQuadro(const std::string& emailUsuario,
 
 bool ControladorQuadros::excluirQuadro(const std::string& emailUsuario, const std::string& codigoQuadro) {
     try {
-        // Lógica para excluir o quadro
+        // Excluir o quadro
         servicosQuadro.excluirQuadro(emailUsuario, codigoQuadro);
         return true;
     } catch (const std::exception& e) {
