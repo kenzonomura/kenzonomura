@@ -1,4 +1,3 @@
-
 #include "dominios.h"
 #include <cstring>
 #include <string>
@@ -30,17 +29,17 @@ void Codigo::setCodigo(string valor){
     this->codigo = valor;
 }
 bool Texto::valid_texto(string text){
-    //IF PARA VER SE O TAMANHO ESTA ENTRE 5 E 30, E VER SE A PRIMEIRA LETRA É MAIUSCULA
+    //IF PARA VER SE O TAMANHO ESTA ENTRE 5 E 30, E VER SE A PRIMEIRA LETRA Ã‰ MAIUSCULA
     if (text.length()>=5 && text.length()<=30 && text[0]>=65 && text[0]<=90){
         //FOR PARA PASSAR POR TODAS AS LETRAS
         for(int i=0; i<text.length(); i++){
-            // IF PARA VER SE CADA LETRA É UMA LETRA MAIUSCULA, MINUSCULA, ESPAÇO OU ,.;!?
+            // IF PARA VER SE CADA LETRA Ã‰ UMA LETRA MAIUSCULA, MINUSCULA, ESPAÃ‡O OU ,.;!?
             if((text[i]>=65 && text[i]<=90)||(text[i]>=97 && text[i]<=122)||(text[i]>=48 && text[i]<=57)|| text[i]==32 || text[i]==33 || text[i]==44 || text[i]==46 ||text[i]==59 || text[i]==63){
 
             }else{
                 return  true;
             }
-            //IF PARA VER SE NAO TEM 2 ESPAÇOS SUBSEQUENTES
+            //IF PARA VER SE NAO TEM 2 ESPAÃ‡OS SUBSEQUENTES
             if (text[i]==32 && text[i-1]==32){
                 return  true;
             }
@@ -48,7 +47,7 @@ bool Texto::valid_texto(string text){
             if(((text[i]==33 || text[i]==44 || text[i]==46 ||text[i]==59 || text[i]==63)&&(text[i-1]==33 || text[i-1]==44 || text[i-1]==46 ||text[i-1]==59 || text[i-1]==63))){
                 return  true;
             }
-            //IF PRA VER SE DEPOIS DE UM PONTO O PROS CARACTERE É MAIUSCULOO
+            //IF PRA VER SE DEPOIS DE UM PONTO O PROS CARACTERE Ã‰ MAIUSCULOO
             if((text[i]==33 || text[i]==46 || text[i]==63) && !(text[i+1]>=65 && text[i+1]<=90)){
                     if(i==text.length()-1){return false;}
                     if(text[i+1]==32 && (text[i+2]>=65 && text[i+2]<=90)){return false;}
