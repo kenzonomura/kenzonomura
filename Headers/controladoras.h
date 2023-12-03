@@ -1,5 +1,5 @@
-#ifndef CONTROLADOR_H
-#define CONTROLADOR_H
+#ifndef CONTROLADORAS_H_INCLUDED
+#define CONTROLADORAS_H_INCLUDED
 
 #include "controladorasservico.h"
 #include <string>
@@ -35,4 +35,4 @@ public:
     bool excluirQuadro(const std::string& emailUsuario, const std::string& codigoQuadro) override;
 };
 
-#endif // CONTROLADOR_H
+#endif // CONTROLADORAS_H_INCLUDED
