@@ -1,5 +1,5 @@
-#ifndef INTERFACES_HPP_INCLUDED
-#define INTERFACES_HPP_INCLUDED
+#ifndef INTERFACES_H_INCLUDED
+#define INTERFACES_H_INCLUDED
 
 #include <string>
 #include <vector>
@@ -95,4 +95,4 @@ public:
     virtual ~ITelaQuadros() {}
 };
 
-#endif // INTERFACES_HPP_INCLUDED
+#endif // INTERFACES_H_INCLUDED
