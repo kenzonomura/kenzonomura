@@ -1,5 +1,5 @@
-#ifndef DATABASE_MANAGER_HPP
-#define DATABASE_MANAGER_HPP
+#ifndef AUTENTICADO_H
+#define AUTENTICADO_H
 
 #include <sqlite3.h>
 #include <string>
@@ -7,10 +7,10 @@
 #include <map>
 #include <optional>
 
-class DatabaseManager {
+class Autenticado {
 public:
-    DatabaseManager(const std::string& dbPath);
-    ~DatabaseManager();
+    Autenticado(const std::string& dbPath);
+    ~Autenticado();
 
     bool abrirConexao();
     void criarTabelas();
@@ -25,4 +25,4 @@ private:
     std::string dbPath;     // Caminho para o banco de dados
 };
 
-#endif // DATABASE_MANAGER_HPP
+#endif // AUTENTICADO_H
