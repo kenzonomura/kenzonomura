@@ -1,6 +1,6 @@
-#include "apresentacao.hpp"
+#include "controladorasapresentacao.h"
 #include <iostream>
-#include "controle.hpp"
+#include "controladoras.h"
 
 TelaCadastro::TelaCadastro() {
     // Inicializações, se necessário
@@ -30,7 +30,6 @@ void TelaCadastro::exibir() {
         std::cout << "Falha no cadastro. Verifique os dados e tente novamente.\n";
     }
 }
-
 
 TelaInicial::TelaInicial() {
     // Inicializações, se necessário
@@ -68,14 +67,13 @@ void TelaInicial::exibir() {
     } while (escolha != 3);
 }
 
-
 TelaLogin::TelaLogin(const std::string& dbPath) : controleLogin(dbPath) {}
 
 void TelaLogin::exibir() {
     std::string email, senha;
 
     std::cout << "Tela de Login\n";
-    std::cout << "Por favor, informe seus dados de login:\n";
+    std::cout << "Por favor, informe seus dados:\n";
 
     std::cout << "Email: ";
     std::cin >> email;
@@ -96,7 +94,6 @@ void TelaLogin::exibir() {
         // Opção para tentar novamente ou voltar ao menu anterior
     }
 }
-
 
 TelaGerenciamentoQuadros::TelaGerenciamentoQuadros(const std::string& dbPath, const std::string& emailUsuario)
     : controladorQuadros(dbPath), emailUsuario(emailUsuario) {}
