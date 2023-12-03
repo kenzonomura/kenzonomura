@@ -1,15 +1,15 @@
-#include "DatabaseManager.hpp"
+#include "autenticado.h"
 #include <iostream>
 
-DatabaseManager::DatabaseManager(const std::string& dbPath) : dbPath(dbPath), db(nullptr) {}
+Autenticado::Autenticado(const std::string& dbPath) : dbPath(dbPath), db(nullptr) {}
 
-DatabaseManager::~DatabaseManager() {
+Autenticado::~Autenticado() {
     if (db) {
         sqlite3_close(db);
     }
 }
 
-bool DatabaseManager::abrirConexao() {
+bool Autenticado::abrirConexao() {
     if (sqlite3_open(dbPath.c_str(), &db) != SQLITE_OK) {
         std::cerr << "Erro ao abrir banco de dados: " << sqlite3_errmsg(db) << std::endl;
         return false;
@@ -17,8 +17,7 @@ bool DatabaseManager::abrirConexao() {
     return true;
 }
 
-
-void DatabaseManager::criarTabelas() {
+void Autenticado::criarTabelas() {
     const char* sqlContas = 
         "CREATE TABLE IF NOT EXISTS Conta ("
                 "Email TEXT PRIMARY KEY, "
@@ -48,8 +47,7 @@ void DatabaseManager::criarTabelas() {
     executarConsulta(sqlCartoes);
 }
 
-
-std::optional<std::vector<std::map<std::string, std::string>>> DatabaseManager::executarConsulta(const std::string& sql) {
+std::optional<std::vector<std::map<std::string, std::string>>> Autenticado::executarConsulta(const std::string& sql) {
     if (sql.find("SELECT") == 0) {
         // Executa consultas SELECT
         sqlite3_stmt* stmt;
